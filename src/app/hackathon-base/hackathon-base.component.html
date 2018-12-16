@@ -1,0 +1,80 @@
+<mat-toolbar color="primary" style="padding: 0 10px">
+  <mat-toolbar-row>
+    <span><img src="../../assets/dxc_logo_hz_wht_rgb_300.png" alt="dxc" height="42" width="250"></span>
+    <div style="padding-left:19vw;font-weight: 700">Hackathon 2k18</div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <i class="material-icons">
+        hearing
+      </i>
+      Patient search
+    </ng-template>
+    <div class="col-md-3">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="First Name" [(ngModel)]="fname">
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Last Name" [(ngModel)]="lname">
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="Sex" [(ngModel)]="sexf">
+          <mat-option value=''></mat-option>
+          <mat-option *ngFor="let sex of Sex" [value]="sex.value">
+            {{sex.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-2">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Age" [(ngModel)]="agef">
+      </mat-form-field>
+    </div>
+    <div class="col-md-1 searchIcon" (click)="FilterPatient()">
+      <i class="material-icons">
+        search
+      </i>
+    </div>
+    <app-speech-recognition (convertedText)=audioToText($event);></app-speech-recognition>
+    <div class="row mar0 speechFont">{{PatSearch}}</div>
+    <div class="row mar0">
+      <kendo-grid [data]="gridView" [selectable]="true" [pageSize]="pageSize"
+      [skip]="skip"
+      [pageable]="true"
+      (pageChange)="pageChange($event)"> >
+        <kendo-grid-column field="FirstName" title="First Name"></kendo-grid-column>
+        <kendo-grid-column field="LastName" title="Last Name"></kendo-grid-column>
+        <kendo-grid-column field="SexDes" title="Sex"></kendo-grid-column>
+        <kendo-grid-column field="Age" title="Age"></kendo-grid-column>
+        <kendo-grid-column field="BMI" title="BMI"></kendo-grid-column>
+      </kendo-grid>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <i class="material-icons">
+        blur_on
+      </i>
+      AI Probability Prediction
+    </ng-template>
+    <app-brain-ai [PatData]='PatientsWholePer'></app-brain-ai>
+  </mat-tab>
+  <!-- <app-brain-ai [PatData]='PatientsWhole'></app-brain-ai> -->
+  <!-- <app-speech-recognition (convertedText)=audioToText($event);></app-speech-recognition> -->
+</mat-tab-group>
+
+
+<!-- <kendo-grid [data]="PatientsWhole" [height]="410">
+  <kendo-grid-column field="FirstName" title="First Name"></kendo-grid-column>
+  <kendo-grid-column field="LastName" title="Last Name"></kendo-grid-column>
+  <kendo-grid-column field="SexDes" title="Sex"></kendo-grid-column>
+  <kendo-grid-column field="Age" title="Age"></kendo-grid-column>
+  <kendo-grid-column field="BMI" title="BMI"></kendo-grid-column>
+</kendo-grid> -->

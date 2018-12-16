@@ -1,0 +1,46 @@
+<div>
+    <img class="trainImg" (click)="neuralLearnInit();" matTooltip="Train neural network" src="../../assets/TrainNw.jpg"
+        alt="Train">
+</div>
+
+<div class="row" style="margin: 0px;padding-top: 3vh">
+    <div class="col-lg-3">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Age" [(ngModel)]="age">
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="BMI" [(ngModel)]="bmi">
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3">
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Sex" [(ngModel)]="sexOP">
+                <mat-option *ngFor="let sex of Sex" [value]="sex.value">
+                    {{sex.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-lg-2" style="padding-top: 5px">
+        <button mat-raised-button (click)="predictValues();" class="btns" color="primary">Predict</button>
+    </div>
+</div>
+<div class="row" style="margin: 0px">
+    <!-- <button mat-raised-button (click)="predictValues();" class="btns" color="primary">Predict</button> -->
+    <!-- <button mat-raised-button (click)="neuralLearnInit();" class="btns" color="primary">Train</button> -->
+
+</div>
+<app-loading-indicator *ngIf="loadIndiactor"></app-loading-indicator>
+<div style="margin: 50px;
+font-size: 25px;" *ngIf="probability">
+    The predicted probability of disease will be : {{probability}}%
+</div>
+<mat-progress-bar style="height:30px" [color]="colorPro" *ngIf="probability" mode="determinate" [value]="probability"></mat-progress-bar>
+<div style="margin:20px" *ngIf="net">
+    <pre>
+    {{net|json}}
+</pre>
+    <button mat-raised-button (click)="downLoadFile();" class="btns" color="primary">Download Learnings</button>
+</div>

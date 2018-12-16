@@ -1,0 +1,22 @@
+.example-icon {
+    padding: 550px;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.speechFont {
+    font-family: monospace;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: -40px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.searchIcon {
+    padding-top: 10px;
+    cursor: pointer;
+}
+

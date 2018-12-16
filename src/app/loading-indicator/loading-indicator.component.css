@@ -1,0 +1,65 @@
+.blind-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.center-screen {
+  z-index: 1000;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0px;
+  bottom: 0px;
+  margin: auto;
+  display: grid;
+  height: 100px;
+  width: 100px;
+}
+
+
+/* Loading indiactor */
+.ball1 {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #FF9933;
+  animation: bounce 0.4s;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(.5, 0.05, 1, .5);
+  animation-iteration-count: infinite;
+}
+.ball2 {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  animation: bounce 0.5s;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(.5, 0.05, 1, .5);
+  animation-iteration-count: infinite;
+}
+.ball3 {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #138808;
+  animation: bounce 0.6s;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(.5, 0.05, 1, .5);
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 200px, 0);
+  }
+}
